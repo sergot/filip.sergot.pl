@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>filip.sergot.pl - coming soon...</title>
+        <meta charset="UTF-8">
+        
+        <link rel="shortcut icon" href="[% uri_base %]/img/favicon.ico" type="image/x-icon">
+        
+        <link rel="stylesheet" type="text/css" href="[% uri_base %]/css/style.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="[% uri_base %]/js/main.js"></script>
+        
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'/>
+        
+        <!-- Piwik -->
+        <script type="text/javascript">
+            var _paq = _paq || [];
+            _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+            _paq.push(["setCookieDomain", "*.sergot.pl"]);
+            _paq.push(["setDomains", ["*.sergot.pl"]]);
+            _paq.push(["trackPageView"]);
+            _paq.push(["enableLinkTracking"]);
+
+            (function() {
+              var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.agilob.net/";
+              _paq.push(["setTrackerUrl", u+"piwik.php"]);
+              _paq.push(["setSiteId", "7"]);
+              var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+              g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+            })();
+        </script>
+        <!-- End Piwik Code -->
+    </head>
+    <body>
+            <div id="all">
+            <div id="header">
+                <div id="logo">
+                    <img src="[% uri_base %]/img/logo.jpg" class="logo" alt="Filip Sergot :: filip.sergot.pl :: logo" width="200" style="vertical-align:middle">
+                    <span class="logotext">filip.sergot.pl</span>
+                </div>
+                <div id="menubarhor">
+                    <ul class="menubarhor">
+                         [% FOR mitem IN  menubarh %]
+                        <li><a href="[% mitem.href %]">[% mitem.text %]</a></li>
+                         [% END %] 
+                    </ul>
+                </div>
+            </div>
+                [% content %]
+            <div id="footer">
+                <div id="extends"><div id="extcol">COL1</div><div id="extcol">COL2</div><div id="extcol">COL3</div></div>
+                <div id="infofooter"><span class="infofooter">filip.sergot.pl &copy; Filip Sergot</span></div>
+            </div>
+        </div>
+    </body>
+</html>

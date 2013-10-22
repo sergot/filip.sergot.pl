@@ -1,0 +1,12 @@
+<div id="centrum">
+
+<form action="" method="post">
+    Tytuł: <input type="text" name="title"><br>
+    Slug: <input type="text" name="slug"><br>
+    Text: <textarea name="content"></textarea><br>
+    Tags: <input type="text" name="tags"><br>
+    
+    <input type="submit" name="send" value="SEND"> <input type="submit" name="saveonly" value="SAVE">
+</form>
+
+</div>

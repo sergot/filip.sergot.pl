@@ -1,0 +1,18 @@
+<div id="content">
+    <div id="blueline"></div>
+    <div id="postwin">
+        <div id="post">
+            <span class="postthumbnail">
+                <img src="[% uri_base %]/img/thumbnails/[% post.thumbnail %]" alt="[% post.title %]" width="200" height="200">
+            </span>
+            <h2 class="posttitle">
+                [% post.title %]
+            </h2>
+            <div id="postinfo">
+                <span class="postauthor">[% post.author %]</span>
+                <span class="postdate">[% post.timestamp %]</span>
+            </div>
+            <p class="postdesc">[% post.content %]</p>
+        </div>
+    </div>
+</div>

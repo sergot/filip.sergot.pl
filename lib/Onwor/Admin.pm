@@ -26,7 +26,7 @@ prefix '/admin' => sub {
                     if (!params->{$_}) {
                         database->quick_delete('menubarhor', { 'id' => $id });
                     } else {
-                        database->quick_update('menubarhor', {'id' => $id }, { 'text' => params->{"text$id"}, 'href' => params->{"href$id"}, 'position' => params->{"position$id"} }); # TODO: optymalizacja
+                        database->quick_update('menubarhor', {'id' => $id }, { 'text' => params->{"text$id"}, 'href' => params->{"href$id"}, 'position' => params->{"position$id"} }); # TODO: optimization
                     }
                 }
             }

@@ -33,7 +33,7 @@ plugins:
             database: 'onwor'
             host: 'localhost'
             port: 3306
-            username: 'user'
+            username: 'root'
             password: 'user'
             connection_check_threshold: 10
             dbi_params:

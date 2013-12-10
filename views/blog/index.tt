@@ -1,41 +1,22 @@
-            <div id="centrum">
                 <div id="content">
+                [% FOR p in posts %]
                     <div id="blueline"></div>
                     <div id="postwin">
                         <div id="post">
                             <span class="postthumbnail">
-                                <img src="img/logo.jpg" width="200" height="200" alt="Miniatura">
+                                <img src="img/thumbnails/[% p.thumbnail %]" width="200" height="200" alt="Miniatura">
                             </span>
                             <h2 class="posttitle">
-                                Tytul, to jest jakis dlugi tytul, tak na dwie linijki powiedzialbym
+                                [% p.title %]
                             </h2>
-                            <div id="postinfo"><span class="postauthor">To jest jakis autor</span><span class="postdate">a to data napisania</span></div>
+                            <div id="postinfo"><span class="postauthor">[% p.author %]</span><span class="postdate">[% p.timestamp %]</span></div>
                             <p class="postdesc">
-                                Łąśðorem ipsum dœoąlor ą sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
+                            [% p.content %]
                             </p>
                             <span class="bluesubmit">
-                                <a href="#" class="bluelink">Read more</a>
+                                <a href="[% uri_base %]/blog//[% p.slug %]" class="bluelink">Read more</a>
                             </span>
                         </div>
                     </div>
+                [% END %]
                 </div>
-                <div id="menubar">
-                    <div id="menudark">
-                        <form action="" method="post">
-                            <input type="text" class="searchtext" value="Search..">
-                            <input type="submit" class="bluesubmit" value="Search">
-                        </form>
-                    </div>
-                    <div id="menu">
-                        <h2 class="menu">Menu</h2>
-                        <ul class="menu">
-                            <li><a href="#">a</a></li>
-                            <li><a href="#">b</a></li>
-                            <ul>
-                                <li><a href="#">c</a></li>
-                            </ul>
-                            <li><a href="#">d</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>

@@ -10,8 +10,8 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <script src="[% uri_base %]/js/main.js"></script>
         
-        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Roboto&subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
         
         <!-- Piwik -->
         <script type="text/javascript">
@@ -47,7 +47,30 @@
                     </ul>
                 </div>
             </div>
+            <div id="centrum">
                 [% content %]
+                <div id="menubar">
+                    <div id="menudark">
+                        <form action="" method="post">
+                            <input type="text" class="searchtext" 
+value="Search..">
+                            <input type="submit" class="bluesubmit" 
+value="Search">
+                        </form>
+                    </div>
+                    <div id="menu">
+                        <h2 class="menu">Menu</h2>
+                        <ul class="menu">
+                            <li><a href="#">a</a></li>
+                            <li><a href="#">b</a></li>
+                            <ul>
+                                <li><a href="#">c</a></li>
+                            </ul>
+                            <li><a href="#">d</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <div id="footer">
                 <div id="extends"><div id="extcol">COL1</div><div id="extcol">COL2</div><div id="extcol">COL3</div></div>
                 <div id="infofooter"><span class="infofooter">filip.sergot.pl &copy; Filip Sergot</span></div>

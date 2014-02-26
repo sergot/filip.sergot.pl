@@ -1,6 +1,0 @@
-<div id="centrum">
-<h3><a href="/admin/blog/posts/add">Add a post</a></h3>
-[% FOR p IN posts %]
-<a href="/admin/blog/posts/edit/[% p.id %]">[% p.title %]</a> | <a href="/admin/blog/posts/del/[% p.id %]">DELETE</a><br>
-[% END %]
-</div>

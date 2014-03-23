@@ -14,6 +14,6 @@ ROADMAP
 
 - generating sites
 - generating posts
-    - including date, tags
+    - including category
 - simple searching
 - comments

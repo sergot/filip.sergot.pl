@@ -1,5 +1,6 @@
 use BreakDancer;
 use Template::Mojo;
+use Text::Markdown;
 
 class Link {
     has $.location;
@@ -10,6 +11,8 @@ class Site {
     has $.title;
     has $.content;
     has $.lang;
+    has $.file;
+    has $.thumbnail;
 }
 
 class Post {
@@ -19,6 +22,7 @@ class Post {
     has $.date;
     has @.tags;
     has $.lang;
+    has $.thumbnail;
 }
 
 my $templates_dir  = 'tmpls';
@@ -28,6 +32,11 @@ my $sites_data_dir = 'data/sites';
 my @languages = <
     pl
     en
+>;
+
+my @categories = <
+    perl6
+    perl
 >;
 
 my $menu = (Link.new(:location<a>, :title<a>), Link.new(:location<b>, :title<b>)).item;
@@ -49,6 +58,27 @@ sub MAIN(Str $what?) {
 
 sub sites {
     say 'generating sites...';
+
+    my @sites;
+
+    for dir $sites_data_dir -> $fn {
+        my @lines = $fn.IO.lines;
+
+        @sites.push:
+            Site.new(
+                content => @lines.join("\n"),
+                title   => $fn.basename.substr(3),
+                file    => $fn.basename.substr(3),
+                lang    => $fn.basename.substr(0, 2),
+            );
+    }
+
+    for @sites -> $site {
+        gen "/{$site.lang}/site/{$site.file}", sub {
+            my $content = Template::Mojo.new(slurp 'tmpls/sites/site.mojo').render($site);
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($menu, $content);
+        } 
+    }
 }
 
 sub blog {
@@ -70,13 +100,13 @@ sub blog {
     }
     my $count = @posts.elems;
 
+    # generate index page with 10 posts
     for @languages -> $lang {
         gen "/$lang", sub {
             my $content;
-            for @posts.sort({ $^b.date <=> $^a.date })[0..9] -> $post {
-                $content ~= Template::Mojo.new(slurp 'tmpls/blog/post.mojo').render($post);
-                $content ~= "\n";
-            }
+            $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render(@posts.sort(
+                { $^b.date <=> $^a.date }
+            )[0..9].item);
 
             return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($menu, $content);
         };

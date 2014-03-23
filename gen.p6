@@ -20,6 +20,7 @@ class Post {
     has $.title;
     has $.content;
     has $.date;
+    has $.author;
     has @.tags;
     has $.lang;
     has $.thumbnail;
@@ -66,7 +67,7 @@ sub sites {
 
         @sites.push:
             Site.new(
-                content => @lines.join("\n"),
+                content => parse-markdown(@lines.join("\n")).to_html,
                 title   => $fn.basename.substr(3),
                 file    => $fn.basename.substr(3),
                 lang    => $fn.basename.substr(0, 2),
@@ -90,12 +91,14 @@ sub blog {
 
         @posts.push:
             Post.new(
-                file    => $fn.basename.substr(3),
-                title   => $fn.basename.substr(3),
-                date    => Date.new(@lines.shift),
-                tags    => @lines.shift.split(',')>>.trim,
-                content => parse-markdown(@lines.join("\n")).to_html,
-                lang    => $fn.basename.split('_').substr(0, 2),
+                file      => $fn.basename.substr(3),
+                title     => $fn.basename.substr(3),
+                date      => Date.new(@lines.shift),
+                tags      => @lines.shift.split(',')>>.trim,
+                author    => @lines.shift,
+                thumbnail => @lines.shift,
+                content   => parse-markdown(@lines.join("\n")).to_html,
+                lang      => $fn.basename.split('_').substr(0, 2),
             );
     }
     my $count = @posts.elems;

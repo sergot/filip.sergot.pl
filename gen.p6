@@ -94,7 +94,7 @@ sub blog {
                 title   => $fn.basename.substr(3),
                 date    => Date.new(@lines.shift),
                 tags    => @lines.shift.split(',')>>.trim,
-                content => @lines.join("\n"),
+                content => parse-markdown(@lines.join("\n")).to_html,
                 lang    => $fn.basename.split('_').substr(0, 2),
             );
     }

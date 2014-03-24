@@ -77,7 +77,7 @@ sub sites {
     for @sites -> $site {
         gen "/{$site.lang}/site/{$site.file}", sub {
             my $content = Template::Mojo.new(slurp 'tmpls/sites/site.mojo').render($site);
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($menu, $content);
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($site.lang, $menu, $content);
         } 
     }
 }
@@ -111,14 +111,14 @@ sub blog {
                 { $^b.date <=> $^a.date }
             )[0..9].item);
 
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($menu, $content);
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, $menu, $content);
         };
     }
 
     for @posts -> $post {
         gen "/{$post.lang}/blog/{$post.file}", sub {
             my $p = Template::Mojo.new(slurp 'tmpls/blog/post.mojo').render($post);
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($menu, $p);
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($post.lang, $menu, $p);
         };
     }
 }

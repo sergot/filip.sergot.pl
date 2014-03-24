@@ -1,4 +1,4 @@
-% my ($topmenu, $content) = @_;
+% my ($lang, $topmenu, $content) = @_;
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,7 +43,7 @@
                 <div id="menubarhor">
                     <ul class="menubarhor">
 % for $topmenu.list -> $m {
-    <li><a href="<%= $m.location %>"><%= $m.title %></a></li>
+    <li><a href="/<%= $lang %>/<%= $m.location %>"><%= $m.title %></a></li>
 % }
                     </ul>
                 </div>

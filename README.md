@@ -12,6 +12,7 @@ The whole site is static, generated using [BreakDancer](https://github.com/sergo
 It:
 - supports multilanguage
 - generates posts, "static" sites and default index page with recent 10 posts
+- changes Markdown to HTML
 
 ROADMAP
 ================

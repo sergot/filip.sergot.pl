@@ -1,4 +1,4 @@
-% my ($posts) = @_;
+% my ($lang, $posts) = @_;
 % for $posts.list -> $post {
                 <div id="content">
                     <div id="blueline"></div>
@@ -17,7 +17,7 @@
                             <%= $post.content.substr(0, 100) %>...
                             </p>
                             <span class="bluesubmit">
-                                <a href="/blog/<%= $post.file %>" class="bluelink">Read more</a>
+                                <a href="/<%= $lang %>/blog/<%= $post.file %>" class="bluelink">Read more</a>
                             </span>
                          </div>
                     </div>

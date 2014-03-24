@@ -107,7 +107,7 @@ sub blog {
     for @languages -> $lang {
         gen "/$lang", sub {
             my $content;
-            $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render(@posts.sort(
+            $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render($lang, @posts.sort(
                 { $^b.date <=> $^a.date }
             )[0..9].item);
 

@@ -1,4 +1,4 @@
-% my ($lang, $topmenu, $content) = @_;
+% my ($lang, $topmenu, $content, $categories) = @_;
 <!DOCTYPE html>
 <html>
     <head>
@@ -60,12 +60,9 @@
                     <div id="menu">
                         <h2 class="menu">Menu</h2>
                         <ul class="menu">
-                            <li><a href="#">a</a></li>
-                            <li><a href="#">b</a></li>
-                            <ul>
-                                <li><a href="#">c</a></li>
-                            </ul>
-                            <li><a href="#">d</a></li>
+% for $categories.list -> $cat {
+                            <li><a href="/<%= $lang %>/blog/<%= $cat %>"><%= $cat %></a></li>
+% }
                         </ul>
                     </div>
                 </div>

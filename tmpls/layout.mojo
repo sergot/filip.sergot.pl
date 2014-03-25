@@ -37,13 +37,13 @@
         <div id="all">
             <div id="header">
                 <div id="logo">
-                    <img src="img/logo.jpg" class="logo" alt="Filip Sergot :: filip.sergot.pl :: logo" width="200" style="vertical-align:middle">
+                    <img src="/img/logo.jpg" class="logo" alt="Filip Sergot :: filip.sergot.pl :: logo" width="200" style="vertical-align:middle">
                     <span class="logotext">filip.sergot.pl</span>
                 </div>
                 <div id="menubarhor">
                     <ul class="menubarhor">
 % for $topmenu.list -> $m {
-    <li><a href="/<%= $lang %>/<%= $m.location %>"><%= $m.title %></a></li>
+    <li><a href="<%= $m.location %>"><%= $m.title %></a></li>
 % }
                     </ul>
                 </div>

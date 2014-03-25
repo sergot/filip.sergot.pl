@@ -5,6 +5,7 @@ use Text::Markdown;
 class Link {
     has $.location;
     has $.title;
+    has $.lang;
 }
 
 class Site {
@@ -23,6 +24,7 @@ class Post {
     has $.author;
     has @.tags;
     has $.lang;
+    has $.category;
     has $.thumbnail;
 }
 
@@ -35,12 +37,29 @@ my @languages = <
     en
 >;
 
-my @categories = <
-    perl6
-    perl
->;
-
-my $menu = (Link.new(:location<a>, :title<a>), Link.new(:location<b>, :title<b>)).item;
+# TODO: menu can be generated better
+my @menu = (
+    Link.new(
+        location => '/pl',
+        title    => 'home',
+        lang     => 'pl',
+    ),
+    Link.new(
+        location => '/en',
+        title    => 'home',
+        lang     => 'en',
+    ),
+    Link.new(
+        location => '/pl/site/kontakt',
+        title    => 'kontakt',
+        lang     => 'pl',
+    ),
+    Link.new(
+        location => '/en/site/contact',
+        title    => 'contact',
+        lang     => 'en',
+    ),
+);
 
 sub MAIN(Str $what?) {
     if ! $what {
@@ -64,10 +83,9 @@ sub sites {
 
     for dir $sites_data_dir -> $fn {
         my @lines = $fn.IO.lines;
-
         @sites.push:
             Site.new(
-                content => parse-markdown(@lines.join("\n")).to_html,
+                content => parse-markdown(@lines.join("<br>\n")).to_html,
                 title   => $fn.basename.substr(3),
                 file    => $fn.basename.substr(3),
                 lang    => $fn.basename.substr(0, 2),
@@ -77,7 +95,7 @@ sub sites {
     for @sites -> $site {
         gen "/{$site.lang}/site/{$site.file}", sub {
             my $content = Template::Mojo.new(slurp 'tmpls/sites/site.mojo').render($site);
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($site.lang, $menu, $content);
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($site.lang, @menu.grep({ .lang ~~ $site.lang }).item, $content);
         } 
     }
 }
@@ -96,8 +114,9 @@ sub blog {
                 date      => Date.new(@lines.shift),
                 tags      => @lines.shift.split(',')>>.trim,
                 author    => @lines.shift,
+                category  => @lines.shift,
                 thumbnail => @lines.shift,
-                content   => parse-markdown(@lines.join("\n")).to_html,
+                content   => parse-markdown(@lines.join("<br>\n")).to_html,
                 lang      => $fn.basename.split('_').substr(0, 2),
             );
     }
@@ -109,16 +128,16 @@ sub blog {
             my $content;
             $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render($lang, @posts.sort(
                 { $^b.date <=> $^a.date }
-            )[0..9].item);
+            ).grep({ .lang ~~ $lang})[0..9].item);
 
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, $menu, $content);
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @menu.grep({ .lang ~~ $lang }).item, $content);
         };
     }
 
     for @posts -> $post {
-        gen "/{$post.lang}/blog/{$post.file}", sub {
+        gen "/{$post.lang}/blog/{$post.category}/{$post.file}", sub {
             my $p = Template::Mojo.new(slurp 'tmpls/blog/post.mojo').render($post);
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($post.lang, $menu, $p);
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($post.lang, @menu.grep({ .lang ~~ $post.lang }).item, $p);
         };
     }
 }

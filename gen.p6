@@ -109,7 +109,7 @@ sub blog {
             my $content;
             $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render($lang, @posts.sort(
                 { $^b.date <=> $^a.date }
-            )[0..9].item);
+            ).grep({ .lang ~~ $lang })[^10].item);
 
             return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, $menu, $content);
         };

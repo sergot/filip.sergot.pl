@@ -18,7 +18,7 @@ ROADMAP
 ================
 
 - RSS
-- category menu
-- generating posts by category
+
+LATER:
 - simple searching
 - comments

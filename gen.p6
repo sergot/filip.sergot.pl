@@ -100,7 +100,8 @@ sub sites {
     for @sites -> $site {
         gen "/{$site.lang}/site/{$site.file}", sub {
             my $content = Template::Mojo.new(slurp 'tmpls/sites/site.mojo').render($site);
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($site.lang, @menu.grep({ .lang ~~ $site.lang }).item, $content, @categories.item);
+            my @newmenu = @menu.grep({ .lang ~~ $site.lang });
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($site.lang, @newmenu.item, @categories.item, $content);
         } 
     }
 }
@@ -137,13 +138,16 @@ sub blog {
             my $content;
             $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render($lang, @posts.grep({ .lang ~~ $lang })[^10].item);
 
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @menu.grep({ .lang ~~ $lang }).item, $content, @categories.item);
+            my @newmenu = @menu.grep({ .lang ~~ $lang });
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @newmenu.item, @categories.item, $content);
         };
         for @categories -> $cat {
             gen "/$lang/blog/$cat", sub {
                 my $content;
                 $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render($lang, @posts.grep({ .lang ~~ $lang && .category ~~ $cat })[^10].item);
-                return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @menu.grep({.lang ~~ $lang}).item, $content, @categories.item);
+
+                my @newmenu = @menu.grep({ .lang ~~ $lang });
+                return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @newmenu.item, @categories.item, $content);
             }
         }
     }
@@ -151,7 +155,8 @@ sub blog {
     for @posts -> $post {
         gen "/{$post.lang}/blog/{$post.category}/{$post.file}", sub {
             my $p = Template::Mojo.new(slurp 'tmpls/blog/post.mojo').render($post);
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($post.lang, @menu.grep({ .lang ~~ $post.lang }).item, $p, @categories.item);
+            my @newmenu = @menu.grep({ .lang ~~ $post.lang });
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($post.lang, @newmenu.item, @categories.item, $p);
         };
     }
 }

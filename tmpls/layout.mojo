@@ -1,4 +1,4 @@
-% my ($lang, $topmenu, $content, $categories) = @_;
+% my ($lang, $topmenu, $categories, $content) = @_;
 <!DOCTYPE html>
 <html>
     <head>

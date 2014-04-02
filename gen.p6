@@ -66,20 +66,65 @@ my @menu = (
     ),
 );
 
+my @posts;
+
+for dir $blog_data_dir -> $fn {
+    my @lines = $fn.IO.lines;
+
+    @posts.push:
+        Post.new(
+            file      => $fn.basename.substr(3),
+            title     => $fn.basename.substr(3),
+            date      => Date.new(@lines.shift),
+            tags      => @lines.shift.split(',')>>.trim,
+            author    => @lines.shift,
+            category  => @lines.shift,
+            thumbnail => @lines.shift,
+            content   => parse-markdown(@lines.join("<br>\n")).to_html,
+            lang      => $fn.basename.split('_').substr(0, 2),
+        );
+}
+@posts .= sort({
+    $^b.date <=> $^a.date
+});
+
 sub MAIN(Str $what?) {
     if ! $what {
         sites;
         blog;
+        rss;
     } elsif $what ~~ 'blog' {
         blog;
     } elsif $what ~~ 'sites' {
         sites;
+    } elsif $what eq 'rss' {
+        rss;
     } else {
         say "You cannot generate $what.";
     }
 }
 
 # subroutines
+sub rss {
+    say 'generating rss...';
+
+    $BreakDancer::ext = '.atom';
+    for @languages -> $lang {
+        gen "/$lang", sub {
+            my $posts = @posts.grep({ .lang ~~ $lang })[^10].item;
+
+            return Template::Mojo.new(slurp 'tmpls/atom.mojo').render($lang, Date.today, $posts);
+        };
+
+        for @categories -> $cat {
+            gen "/$lang/blog/$cat", sub {
+                my $posts = @posts.grep({ .lang ~~ $lang && .category ~~ $cat })[^10].item;
+
+                return Template::Mojo.new(slurp 'tmpls/atom.mojo').render($lang, Date.today, $posts);
+            }
+        }
+    }
+}
 
 sub sites {
     say 'generating sites...';
@@ -108,27 +153,6 @@ sub sites {
 
 sub blog {
     say 'generating blog...';
-    my @posts;
-
-    for dir $blog_data_dir -> $fn {
-        my @lines = $fn.IO.lines;
-
-        @posts.push:
-            Post.new(
-                file      => $fn.basename.substr(3),
-                title     => $fn.basename.substr(3),
-                date      => Date.new(@lines.shift),
-                tags      => @lines.shift.split(',')>>.trim,
-                author    => @lines.shift,
-                category  => @lines.shift,
-                thumbnail => @lines.shift,
-                content   => parse-markdown(@lines.join("<br>\n")).to_html,
-                lang      => $fn.basename.split('_').substr(0, 2),
-            );
-    }
-    @posts .= sort({
-        $^b.date <=> $^a.date
-    });
 
     my $count = @posts.elems;
 

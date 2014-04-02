@@ -13,12 +13,10 @@ It:
 - supports multilanguage
 - generates posts, "static" sites and default index page with recent 10 posts
 - changes Markdown to HTML
+- RSS (using BreakDancer too)
 
 ROADMAP
 ================
 
-- RSS
-
-LATER:
 - simple searching
 - comments

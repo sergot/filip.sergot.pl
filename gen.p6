@@ -85,7 +85,7 @@ for dir $blog_data_dir -> $fn {
             author    => @lines.shift,
             category  => @lines.shift,
             thumbnail => @lines.shift,
-            content   => html_escape(parse-markdown(@lines.join("<br>\n")).to_html),
+            content   => parse-markdown(@lines.join("<br>\n")).to_html,
             lang      => $fn.basename.split('_').substr(0, 2),
         );
 }

@@ -74,9 +74,9 @@ my @menu = (
 my @posts;
 
 for dir $blog_data_dir -> $fn {
-    my @lines = $fn.IO.lines;
-
     unless $fn.basename.substr(0, 1) eq '.' {
+        my @lines = $fn.IO.lines;
+
         @posts.push:
             Post.new(
                 file      => $fn.basename.substr(3),

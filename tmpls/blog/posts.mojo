@@ -6,7 +6,7 @@
                         <div id="post">
 % if $post.thumbnail.defined {
                             <span class="postthumbnail">
-                                <img src="img/blog/logo.jpg" width="200" height="200" alt="Miniatura">
+                                <img src="img/blog/<%= $post.thumbnail %>" width="200" height="200" alt="Miniatura">
                             </span>
 % }
                             <h2 class="posttitle">

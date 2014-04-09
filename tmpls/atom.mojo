@@ -9,7 +9,7 @@
 
 % for $posts.list -> $post {
     <entry>
-        <title><%= $post.title %><title>
+        <title><%= $post.title %></title>
         <link href="http://filip.sergot.pl/blog/<%= $post.category %>/<%= $post.file %>/"/>
         <id>tag:filip.sergot.pl,<%= $post.date %>:blog/<%= $post.category %>/<%= $post.file %>/</id>
         <author>

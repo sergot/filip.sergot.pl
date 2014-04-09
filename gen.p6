@@ -1,6 +1,9 @@
+#!/usr/bin/env perl6
+
 use BreakDancer;
 use Template::Mojo;
 use Text::Markdown;
+use DateTime::Format::W3CDTF;
 
 class Link {
     has $.location;
@@ -27,6 +30,8 @@ class Post {
     has $.category;
     has $.thumbnail;
 }
+
+my $w3c = DateTime::Format::W3CDTF.new;
 
 my $templates_dir  = 'tmpls';
 my $blog_data_dir  = 'data/posts';
@@ -80,7 +85,7 @@ for dir $blog_data_dir -> $fn {
             author    => @lines.shift,
             category  => @lines.shift,
             thumbnail => @lines.shift,
-            content   => parse-markdown(@lines.join("<br>\n")).to_html,
+            content   => html_escape(parse-markdown(@lines.join("<br>\n")).to_html),
             lang      => $fn.basename.split('_').substr(0, 2),
         );
 }
@@ -113,14 +118,14 @@ sub rss {
         gen "/$lang", sub {
             my $posts = @posts.grep({ .lang ~~ $lang })[^10].item;
 
-            return Template::Mojo.new(slurp 'tmpls/atom.mojo').render($lang, Date.today, $posts);
+            return Template::Mojo.new(slurp 'tmpls/atom.mojo').render($lang, $w3c.parse(~Date.today), $posts);
         };
 
         for @categories -> $cat {
             gen "/$lang/blog/$cat", sub {
                 my $posts = @posts.grep({ .lang ~~ $lang && .category ~~ $cat })[^10].item;
 
-                return Template::Mojo.new(slurp 'tmpls/atom.mojo').render($lang, Date.today, $posts);
+                return Template::Mojo.new(slurp 'tmpls/atom.mojo').render($lang, $w3c.parse(~Date.today), $posts);
             }
         }
     }
@@ -183,4 +188,9 @@ sub blog {
             return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($post.lang, @newmenu.item, @categories.item, $p);
         };
     }
+}
+
+sub html_escape {
+    $^text.trans:
+        ['<', '>', '&'] => ['&lt;', '&gt;', '&amp;'];
 }

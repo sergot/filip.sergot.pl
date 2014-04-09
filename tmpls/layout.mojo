@@ -53,8 +53,8 @@
                 <div id="menubar">
                     <div id="menudark">
                         <form action="" method="post">
-                            <input type="text" class="searchtext" value="Search..">
-                            <input type="submit" class="bluesubmit" value="Search">
+                            <input type="text" class="searchtext" value="Not available yet..." disabled>
+                            <input type="submit" class="bluesubmit" value="Search" disabled>
                         </form>
                     </div>
                     <div id="menu">

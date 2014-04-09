@@ -18,5 +18,6 @@ It:
 ROADMAP
 ================
 
+- content
 - simple searching
 - comments

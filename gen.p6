@@ -22,8 +22,8 @@ class Site {
 class Post {
     has $.file;
     has $.title;
-    has $.content;
-    has $.date;
+    has $.content is rw;
+    has $.date is rw;
     has $.author;
     has @.tags;
     has $.lang;
@@ -112,6 +112,10 @@ sub MAIN(Str $what?) {
 # subroutines
 sub rss {
     say 'generating rss...';
+
+    # html scape
+    @posts.map({ .content = html_escape(.content) });
+    @posts.map({ .date = $w3c.parse(~.date) });
 
     $BreakDancer::ext = '.atom';
     for @languages -> $lang {

@@ -76,18 +76,20 @@ my @posts;
 for dir $blog_data_dir -> $fn {
     my @lines = $fn.IO.lines;
 
-    @posts.push:
-        Post.new(
-            file      => $fn.basename.substr(3),
-            title     => $fn.basename.substr(3),
-            date      => Date.new(@lines.shift),
-            tags      => @lines.shift.split(',')>>.trim,
-            author    => @lines.shift,
-            category  => @lines.shift,
-            thumbnail => @lines.shift,
-            content   => parse-markdown(@lines.join("<br>\n")).to_html,
-            lang      => $fn.basename.split('_').substr(0, 2),
-        );
+    unless $fn.basename.substr(0, 1) eq '.' {
+        @posts.push:
+            Post.new(
+                file      => $fn.basename.substr(3),
+                title     => $fn.basename.substr(3),
+                date      => Date.new(@lines.shift),
+                tags      => @lines.shift.split(',')>>.trim,
+                author    => @lines.shift,
+                category  => @lines.shift,
+                thumbnail => @lines.shift,
+                content   => parse-markdown(@lines.join("<br>\n")).to_html,
+                lang      => $fn.basename.split('_').substr(0, 2),
+            );
+    }
 }
 @posts .= sort({
     $^b.date <=> $^a.date
@@ -141,14 +143,16 @@ sub sites {
     my @sites;
 
     for dir $sites_data_dir -> $fn {
-        my @lines = $fn.IO.lines;
-        @sites.push:
-            Site.new(
-                content => parse-markdown(@lines.join("<br>\n")).to_html,
-                title   => $fn.basename.substr(3),
-                file    => $fn.basename.substr(3),
-                lang    => $fn.basename.substr(0, 2),
-            );
+        unless $fn.basename.substr(0, 1) eq '.' {
+            my @lines = $fn.IO.lines;
+            @sites.push:
+                Site.new(
+                    content => parse-markdown(@lines.join("<br>\n")).to_html,
+                    title   => $fn.basename.substr(3),
+                    file    => $fn.basename.substr(3),
+                    lang    => $fn.basename.substr(0, 2),
+                );
+        }
     }
 
     for @sites -> $site {

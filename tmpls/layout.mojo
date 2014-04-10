@@ -68,7 +68,18 @@
                 </div>
             </div>
             <div id="footer">
-                <div id="extends"><div id="extcol">COL1</div><div id="extcol">COL2</div><div id="extcol">COL3</div></div>
+                <div id="extends">
+                    <div id="extcol">
+                        <a class="twitter-timeline"  href="https://twitter.com/fsergot"  data-widget-id="454173781959778305">Tweets by @fsergot</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </div>
+                    <div id="extcol">
+                        COL2
+                    </div>
+                    <div id="extcol">
+                        COL3
+                    </div>
+                </div>
                 <div id="infofooter"><span class="infofooter">filip.sergot.pl &copy; Filip Sergot</span></div>
             </div>
         </div>

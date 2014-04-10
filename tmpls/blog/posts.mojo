@@ -4,7 +4,7 @@
                     <div id="blueline"></div>
                     <div id="postwin">
                         <div id="post">
-% if $post.thumbnail.defined {
+% if $post.thumbnail {
                             <span class="postthumbnail">
                                 <img src="img/blog/<%= $post.thumbnail %>" width="200" height="200" alt="Miniatura">
                             </span>

@@ -6,7 +6,6 @@ Sourcecode of filip.sergot.pl. Written using [BreakDancer](https://github.com/se
 INFORMATION
 ================
 
-It doesn't work for now. Work in progress.
 The whole site is static, generated using [BreakDancer](https://github.com/sergot/BreakDancer).
 
 It:

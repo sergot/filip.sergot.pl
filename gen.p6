@@ -79,8 +79,8 @@ for dir $blog_data_dir -> $fn {
 
         @posts.push:
             Post.new(
-                file      => $fn.basename.substr(3),
-                title     => $fn.basename.substr(3),
+                file      => $fn.basename.substr(3, $fn.basename.chars - 3 - 3),
+                title     => $fn.basename.substr(3, $fn.basename.chars - 3 - 3).split('_').join(' '),
                 date      => Date.new(@lines.shift),
                 tags      => @lines.shift.split(',')>>.trim,
                 author    => @lines.shift,
@@ -148,8 +148,8 @@ sub sites {
             @sites.push:
                 Site.new(
                     content => parse-markdown(@lines.join("<br>\n")).to_html,
-                    title   => $fn.basename.substr(3),
-                    file    => $fn.basename.substr(3),
+                    title   => $fn.basename.substr(3, $fn.basename.chars - 3 - 3).split('_').join(' '),
+                    file    => $fn.basename.substr(3, $fn.basename.chars - 3 - 3),
                     lang    => $fn.basename.substr(0, 2),
                 );
         }

@@ -17,6 +17,8 @@ It:
 ROADMAP
 ================
 
+- posts as .md files
+- statistics (performance, time etc.)
 - content
 - simple searching
 - comments

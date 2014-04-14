@@ -17,8 +17,6 @@ It:
 ROADMAP
 ================
 
-- content as .md files
-- convert filenames to titles
 - statistics (performance, time etc.)
 - content
 - simple searching

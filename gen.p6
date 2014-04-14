@@ -159,7 +159,7 @@ sub sites {
         gen "/{$site.lang}/site/{$site.file}", sub {
             my $content = Template::Mojo.new(slurp 'tmpls/sites/site.mojo').render($site);
             my @newmenu = @menu.grep({ .lang ~~ $site.lang });
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($site.lang, @newmenu.item, @categories.item, $content);
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($site.lang, @newmenu.item, @categories.item, $content, $site.title);
         } 
     }
 }
@@ -176,7 +176,7 @@ sub blog {
             $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render($lang, @posts.grep({ .lang ~~ $lang })[^10].item);
 
             my @newmenu = @menu.grep({ .lang ~~ $lang });
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @newmenu.item, @categories.item, $content);
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @newmenu.item, @categories.item, $content, 'home');
         };
         for @categories -> $cat {
             gen "/$lang/blog/$cat", sub {
@@ -184,7 +184,7 @@ sub blog {
                 $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render($lang, @posts.grep({ .lang ~~ $lang && .category ~~ $cat })[^10].item);
 
                 my @newmenu = @menu.grep({ .lang ~~ $lang });
-                return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @newmenu.item, @categories.item, $content);
+                return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @newmenu.item, @categories.item, $content, $cat);
             }
         }
     }
@@ -193,7 +193,7 @@ sub blog {
         gen "/{$post.lang}/blog/{$post.category}/{$post.file}", sub {
             my $p = Template::Mojo.new(slurp 'tmpls/blog/post.mojo').render($post);
             my @newmenu = @menu.grep({ .lang ~~ $post.lang });
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($post.lang, @newmenu.item, @categories.item, $p);
+            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($post.lang, @newmenu.item, @categories.item, $p, $post.title);
         };
     }
 }

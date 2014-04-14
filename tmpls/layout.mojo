@@ -1,8 +1,8 @@
-% my ($lang, $topmenu, $categories, $content) = @_;
+% my ($lang, $topmenu, $categories, $content, $title) = @_;
 <!DOCTYPE html>
 <html>
     <head>
-        <title>filip.sergot.pl - coming soon...</title>
+        <title><%= $title %> :: filip.sergot.pl</title>
         <meta charset="UTF-8">
         
         <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">

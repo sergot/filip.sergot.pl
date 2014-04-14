@@ -18,6 +18,7 @@ ROADMAP
 ================
 
 - statistics (performance, time etc.)
+- changeable title of website
 - content
 - simple searching
 - comments

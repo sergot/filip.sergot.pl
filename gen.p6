@@ -29,6 +29,23 @@ class Post {
     has $.lang;
     has $.category;
     has $.thumbnail;
+
+    method html {
+        parse-markdown($.content).to_html;
+    }
+
+    method short {
+        my $content = $.content.substr(256);
+        # TODO : find last open html/md tag and close it
+    }
+
+    method w3c {
+        DateTime::Format::W3CDTF.new.parse(~$.date);
+    }
+
+    method html_escape {
+        _html_escape((parse_markdown($.content).to_html);
+    }
 }
 
 my $w3c = DateTime::Format::W3CDTF.new;
@@ -42,12 +59,13 @@ my @languages = <
     en
 >;
 
+# TODO : create this array dynamically
 my @categories = <
     perl6
     others
 >;
 
-# TODO: menu can be generated better
+# TODO : create this array dynamically
 my @menu = (
     Link.new(
         location => '/pl',
@@ -116,7 +134,7 @@ sub rss {
     say 'generating rss...';
 
     # html scape
-    @posts.map({ .content = html_escape(.content) });
+    @posts.map({ .content = _html_escape(.content) });
     @posts.map({ .date = $w3c.parse(~.date) });
 
     $BreakDancer::ext = '.atom';
@@ -198,7 +216,7 @@ sub blog {
     }
 }
 
-sub html_escape {
+sub _html_escape {
     $^text.trans:
         ['<', '>', '&'] => ['&lt;', '&gt;', '&amp;'];
 }

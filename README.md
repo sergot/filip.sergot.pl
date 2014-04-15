@@ -17,6 +17,8 @@ It:
 ROADMAP
 ================
 
+- refactoring: add methods to classes
+- syntax highlighting
 - statistics (performance, time etc.)
 - content
 - simple searching

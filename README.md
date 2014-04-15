@@ -1,3 +1,5 @@
+ABANDONED - this version is too slow.
+
 filip.sergot.pl
 ================
 

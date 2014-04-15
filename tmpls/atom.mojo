@@ -11,13 +11,13 @@
     <entry>
         <title><%= $post.title %></title>
         <link href="http://filip.sergot.pl/<%= $lang %>/blog/<%= $post.category %>/<%= $post.file %>/"/>
-        <id>tag:filip.sergot.pl,<%= (~$post.date).substr(0, 10) %>:blog/<%= $post.category %>/<%= $post.file %>/</id>
+        <id>tag:filip.sergot.pl,<%= (~$post.date).split('-').reverse.join('-') %>:blog/<%= $post.category %>/<%= $post.file %>/</id>
         <author>
             <name><%= $post.author %></name>
         </author>
-        <updated><%= $post.date %></updated>
+        <updated><%= $post.w3c %></updated>
         <content type="html">
-            <%= $post.content %>
+            <%= $post.html_escape %>
         </content>
     </entry>
 % }

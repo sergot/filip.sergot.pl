@@ -44,7 +44,7 @@ class Post {
     }
 
     method html_escape {
-        _html_escape((parse_markdown($.content).to_html);
+        _html_escape(parse-markdown($.content).to_html);
     }
 }
 
@@ -132,10 +132,6 @@ sub MAIN(Str $what?) {
 # subroutines
 sub rss {
     say 'generating rss...';
-
-    # html scape
-    @posts.map({ .content = _html_escape(.content) });
-    @posts.map({ .date = $w3c.parse(~.date) });
 
     $BreakDancer::ext = '.atom';
     for @languages -> $lang {

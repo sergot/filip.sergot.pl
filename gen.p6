@@ -35,8 +35,8 @@ class Post {
     }
 
     method short {
-        my $content = $.content.substr(256);
         # TODO : find last open html/md tag and close it
+        parse-markdown($.content.substr(0, 256)).to_html;
     }
 
     method w3c {
@@ -192,6 +192,7 @@ sub blog {
             my @newmenu = @menu.grep({ .lang ~~ $lang });
             return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @newmenu.item, @categories.item, $content, 'home');
         };
+
         for @categories -> $cat {
             gen "/$lang/blog/$cat", sub {
                 my $content;

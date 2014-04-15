@@ -13,7 +13,7 @@
                             </h2>
                             <div id="postinfo"><span class="postauthor"><%= $post.author %></span><span class="postdate"><%= $post.date %></span></div>
                             <p class="postdesc">
-                            <%= $post.content %>
+                            <%= $post.html %>
                             </p>
                         </div>
                     </div>

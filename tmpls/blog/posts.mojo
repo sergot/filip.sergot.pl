@@ -14,7 +14,7 @@
                             </h2>
                             <div id="postinfo"><span class="postauthor"><%= $post.author %></span><span class="postdate"><%= $post.date %></span></div>
                             <p class="postdesc">
-                            <%= $post.content.substr(0, 100) %>...
+                            <%= $post.short %>...
                             </p>
                             <span class="bluesubmit">
                                 <a href="/<%= $lang %>/blog/<%= $post.category %>/<%= $post.file %>" class="bluelink">Read more</a>

@@ -23,6 +23,7 @@ class Post {
     has $.file;
     has $.title;
     has $.content is rw;
+    has $.short;
     has $.date is rw;
     has $.author;
     has @.tags;
@@ -87,6 +88,7 @@ for dir $blog_data_dir -> $fn {
                 category  => @lines.shift,
                 thumbnail => @lines.shift,
                 content   => parse-markdown(@lines.join("<br>\n")).to_html,
+                short     => parse-markdown(@lines.join("<br>\n").substr(0, 256)).to_html,
                 lang      => $fn.basename.split('_').substr(0, 2),
             );
     }

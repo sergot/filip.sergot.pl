@@ -74,10 +74,16 @@
                         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                     </div>
                     <div id="extcol">
-                        COL2
+                        <h3>About this site</h3>
+                        <p>This site is generated using <a href="https://github.com/sergot/BreakDancer" target="_blank">BreakDancer</a>.</p>
+                        <p>The sourcecode of this site is on <a href="https://github.com/sergot/filip.sergot.pl" target="_blank">github</a>, feel free to contribute.</p>
                     </div>
                     <div id="extcol">
-                        COL3
+                        <h3>About me</h3>
+                        <p>
+                            <img src="/img/filipsergot.jpeg" alt="Filip Sergot" width="100" style="float: right">
+                            Hi! My name is Filip Sergot. I am a programmer, hacker, science enthusiast, fascinated by computers, always having my head in the clouds.
+                        </p>
                     </div>
                 </div>
                 <div id="infofooter"><span class="infofooter">filip.sergot.pl &copy; Filip Sergot</span></div>

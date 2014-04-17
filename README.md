@@ -17,6 +17,7 @@ It:
 ROADMAP
 ================
 
+- html
 - syntax highlighting
 - statistics (performance, time etc.)
 - content

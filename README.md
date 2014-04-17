@@ -17,9 +17,14 @@ It:
 ROADMAP
 ================
 
-- html
+- pagination
 - syntax highlighting
 - statistics (performance, time etc.)
 - content
 - simple searching
 - comments
+
+BUGS
+================
+
+- \<br\>s in \<code\>

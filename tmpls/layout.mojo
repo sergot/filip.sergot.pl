@@ -84,6 +84,11 @@
                             <img src="/img/filipsergot.jpeg" alt="Filip Sergot" width="100" style="float: right">
                             Hi! My name is Filip Sergot. I am a programmer, hacker, science enthusiast, fascinated by computers, always having my head in the clouds.
                         </p>
+                        <p>
+                            I'm quite social, I think:<br>
+                            <a href="https://github.com/sergot" target="_blank">GitHub</a><br>
+                            <a href="http://twitter.com/fsergot" target="_blank">Twitter</a><br>
+                        </p>
                     </div>
                 </div>
                 <div id="infofooter"><span class="infofooter">filip.sergot.pl &copy; Filip Sergot</span></div>

@@ -77,6 +77,7 @@
                         <h3>About this site</h3>
                         <p>This site is generated using <a href="https://github.com/sergot/BreakDancer" target="_blank">BreakDancer</a>.</p>
                         <p>The sourcecode of this site is on <a href="https://github.com/sergot/filip.sergot.pl" target="_blank">github</a>, feel free to contribute.</p>
+                        <p>The <a href="/img/logo.jpg">logo</a> designed by <a href="http://cukiereq.pl" target="_blank">cukiereq</a>.</p>
                     </div>
                     <div id="extcol">
                         <h3>About me</h3>

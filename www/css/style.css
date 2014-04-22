@@ -207,6 +207,8 @@ h2.menu {
 
 #extcol img {
     border-radius: 4px;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
 
 #extcol p {

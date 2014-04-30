@@ -27,4 +27,4 @@ ROADMAP
 BUGS
 ================
 
-- \<br\>s in \<code\> (probably Text::Markdown improvement)
+- \<br\>s in \<code\>

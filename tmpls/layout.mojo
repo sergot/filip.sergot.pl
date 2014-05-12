@@ -89,7 +89,7 @@
                         <p>This site is generated using <a href="https://github.com/sergot/BreakDancer" target="_blank">BreakDancer</a>.</p>
                         <p>The sourcecode of this site is on <a href="https://github.com/sergot/filip.sergot.pl" target="_blank">github</a>, feel free to contribute.</p>
                         <p>The <a href="/img/logo.jpg" target="_blank">logo</a> designed by <a href="http://facebook.com/cukiereq.zuzu" target="_blank">cukiereq</a>.</p>
-                        <p>Oh, I should have been admonish.. this site is still being <a href="https://github.com/sergot/filip.sergot.pl#roadmap" target="_blank">developed</a>. Contact me, if you have some feedback. :)</p>
+                        <p>Oh, I should have added.. this site is still being <a href="https://github.com/sergot/filip.sergot.pl#roadmap" target="_blank">developed</a>. Any feedback is likely to receive. :)</p>
                     </div>
                     <div id="extcol">
                         <h3>About me</h3>

@@ -8,7 +8,9 @@
         <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
         
         <link rel="stylesheet" type="text/css" href="/css/style.css">
+
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <!-- There will be some JS, I promise! :) -->
         <script src="/js/main.js"></script>
         
         <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
@@ -37,8 +39,9 @@
         <div id="all">
             <div id="header">
                 <div id="logo">
-                    <img src="/img/logo.jpg" class="logo" alt="Filip Sergot :: filip.sergot.pl :: logo" width="200" style="vertical-align:middle">
-                    <span class="logotext">filip.sergot.pl</span>
+                    <img src="/img/logo.jpg" class="logo" alt="Filip Sergot :: filip.sergot.pl :: logo" width="200" style="float: left; vertical-align: middle;">
+                    <div class="logotext">sergot's homepage</div>
+                    <div class="logodesc">Programming and stuff.</div>
                 </div>
                 <div id="menubarhor">
                     <ul class="menubarhor">
@@ -60,6 +63,14 @@
                     <div id="menu">
                         <h2 class="menu">Menu</h2>
                         <ul class="menu">
+% for $topmenu.list -> $m {
+                            <li><a href="<%= $m.location %>"><%= $m.title %></a></li>
+% }
+                        </ul>
+                    </div>
+                    <div id="menu">
+                        <h2 class="menu">Menu</h2>
+                        <ul class="menu">
 % for $categories.list -> $cat {
                             <li><a href="/<%= $lang %>/blog/<%= $cat %>"><%= $cat %></a></li>
 % }
@@ -77,7 +88,8 @@
                         <h3>About this site</h3>
                         <p>This site is generated using <a href="https://github.com/sergot/BreakDancer" target="_blank">BreakDancer</a>.</p>
                         <p>The sourcecode of this site is on <a href="https://github.com/sergot/filip.sergot.pl" target="_blank">github</a>, feel free to contribute.</p>
-                        <p>The <a href="/img/logo.jpg">logo</a> designed by <a href="http://cukiereq.pl" target="_blank">cukiereq</a>.</p>
+                        <p>The <a href="/img/logo.jpg" target="_blank">logo</a> designed by <a href="http://facebook.com/cukiereq.zuzu" target="_blank">cukiereq</a>.</p>
+                        <p>Oh, I should have been admonish.. this site is still being <a href="https://github.com/sergot/filip.sergot.pl#roadmap" target="_blank">developed</a>. Contact me, if you have some feedback. :)</p>
                     </div>
                     <div id="extcol">
                         <h3>About me</h3>

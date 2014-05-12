@@ -25,8 +25,13 @@ img.logo {
     padding: 5px;
 }
 
-span.logotext {
+div.logotext {
     font-size: xx-large;
+    margin-left: 50px;
+}
+
+div.logodesc {
+    font-size: large;
     margin-left: 50px;
 }
 

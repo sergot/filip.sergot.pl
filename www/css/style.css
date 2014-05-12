@@ -310,6 +310,11 @@ ul.menu a {
     text-decoration: none;
     color: #666666;
 }
+
 ul.menu a:hover {
     color: #00a3e8;
+}
+
+hr {
+    border: 1px solid #ddddde;
 }

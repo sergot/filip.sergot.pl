@@ -10,7 +10,7 @@
                             </span>
 % }
                             <h2 class="posttitle">
-                                <%= $post.title %>
+                                <a href="/<%= $lang %>/blog/<%= $post.category %>/<%= $post.file %>"><%= $post.title %></a>
                             </h2>
                             <div id="postinfo"><span class="postauthor"><%= $post.author %></span><span class="postdate"><%= $post.date %></span></div>
                             <p class="postdesc">

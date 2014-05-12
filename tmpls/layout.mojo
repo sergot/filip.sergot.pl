@@ -69,7 +69,7 @@
                         </ul>
                     </div>
                     <div id="menu">
-                        <h2 class="menu">Menu</h2>
+                        <h2 class="menu">categories</h2>
                         <ul class="menu">
 % for $categories.list -> $cat {
                             <li><a href="/<%= $lang %>/blog/<%= $cat %>"><%= $cat %></a></li>

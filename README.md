@@ -22,7 +22,13 @@ ROADMAP
 - statistics (performance, time etc.)
 - content
 - simple searching
-- comments
+
+
+WORKAROUNDS
+================
+
+- comments (we can use disqus I think...)
+
 
 BUGS
 ================

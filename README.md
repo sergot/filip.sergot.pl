@@ -33,4 +33,4 @@ WORKAROUNDS
 BUGS
 ================
 
-- \<br\>s in \<code\>
+- \<br\>s in \<code\> (can be workarounded using jQuery - `$('code').find('br').remove();`)

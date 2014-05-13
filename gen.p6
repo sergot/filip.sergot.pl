@@ -161,7 +161,7 @@ sub sites {
         unless $fn.basename.substr(0, 1) eq '.' {
             @sites.push:
                 Site.new(
-                    content => qqx[Markdown_1.0.1/Markdown.pl --html4tags $fn], #parse-markdown(@lines.join("<br>\n")).to_html,
+                    content => qqx[Markdown_1.0.1/Markdown.pl --html4tags $fn],
                     title   => $fn.basename.substr(3, $fn.basename.chars - 3 - 3).split('_').join(' '),
                     file    => $fn.basename.substr(3, $fn.basename.chars - 3 - 3),
                     lang    => $fn.basename.substr(0, 2),

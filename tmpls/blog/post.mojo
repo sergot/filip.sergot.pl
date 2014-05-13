@@ -12,10 +12,9 @@
                                 <%= $post.title %>
                             </h2>
                             <div id="postinfo"><span class="postauthor"><%= $post.author %></span><span class="postdate"><%= $post.date %></span></div>
-                            <p class="postdesc">
+                            <div class="postdesc">
                             <%= $post.content %>
-                            </p>
-                            <br>
+                            </div>
                             <hr>
                             <div id="disqus_thread"></div>
                                 <script type="text/javascript">

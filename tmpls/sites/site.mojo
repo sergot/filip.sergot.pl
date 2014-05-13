@@ -11,9 +11,9 @@
                             <h2 class="posttitle">
                                 <%= $site.title %>
                             </h2>
-                            <p class="postdesc">
+                            <div class="postdesc">
                             <%= $site.content %>
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>

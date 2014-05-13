@@ -85,7 +85,7 @@
                         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                     </div>
                     <div id="extcol">
-                        <h3>About this site</h3>
+                        <h3 id="aboutthissite">About this site</h3>
                         <p>This site is generated using <a href="https://github.com/sergot/BreakDancer" target="_blank">BreakDancer</a>.</p>
                         <p>The sourcecode of this site is on <a href="https://github.com/sergot/filip.sergot.pl" target="_blank">github</a>, feel free to contribute.</p>
                         <p>The <a href="/img/logo.jpg" target="_blank">logo</a> designed by <a href="http://facebook.com/cukiereq.zuzu" target="_blank">cukiereq</a>.</p>

@@ -151,8 +151,9 @@ h2.posttitle {
     font-family: 'open sans condensed';
 }
 
-p.postdesc {
+div.postdesc {
     font-size: 110%;
+    margin-bottom: 20px;
 }
 
 #menubar {

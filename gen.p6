@@ -2,7 +2,6 @@
 
 use BreakDancer;
 use Template::Mojo;
-use Text::Markdown;
 use DateTime::Format::W3CDTF;
 
 class Link {
@@ -23,7 +22,7 @@ class Post {
     has $.file;
     has $.title;
     has $.content is rw;
-    has $.short;
+    has $.short is rw;
     has $.date is rw;
     has $.author;
     has @.tags;
@@ -77,8 +76,7 @@ my @posts;
 for dir $blog_data_dir -> $fn {
     unless $fn.basename.substr(0, 1) eq '.' {
         my @lines = $fn.IO.lines;
-
-        @posts.push:
+        my $post =
             Post.new(
                 file      => $fn.basename.substr(3, $fn.basename.chars - 3 - 3),
                 title     => $fn.basename.substr(3, $fn.basename.chars - 3 - 3).split('_').join(' '),
@@ -87,10 +85,25 @@ for dir $blog_data_dir -> $fn {
                 author    => @lines.shift,
                 category  => @lines.shift,
                 thumbnail => @lines.shift,
-                content   => parse-markdown(@lines.join("<br>\n")).to_html,
-                short     => parse-markdown(@lines.join("<br>\n").substr(0, 256)).to_html,
                 lang      => $fn.basename.split('_').substr(0, 2),
             );
+
+        my $content = @lines.join("\n");
+        given open '/tmp/tmpblogpost', :w -> $tf {
+            $tf.print($content);
+            $tf.close();
+        }
+        $post.content = qx[Markdown_1.0.1/Markdown.pl --html4tags /tmp/tmpblogpost];
+        unlink '/tmp/tmpblogpost';
+
+        given open '/tmp/tmpblogpost', :w -> $tf {
+            $tf.print($content.substr(0, 256));
+            $tf.close();
+        }
+        $post.short = qx[Markdown_1.0.1/Markdown.pl --html4tags /tmp/tmpblogpost];
+        unlink '/tmp/tmpblogpost';
+
+        @posts.push: $post;
     }
 }
 @posts .= sort({
@@ -146,10 +159,9 @@ sub sites {
 
     for dir $sites_data_dir -> $fn {
         unless $fn.basename.substr(0, 1) eq '.' {
-            my @lines = $fn.IO.lines;
             @sites.push:
                 Site.new(
-                    content => parse-markdown(@lines.join("<br>\n")).to_html,
+                    content => qqx[Markdown_1.0.1/Markdown.pl --html4tags $fn], #parse-markdown(@lines.join("<br>\n")).to_html,
                     title   => $fn.basename.substr(3, $fn.basename.chars - 3 - 3).split('_').join(' '),
                     file    => $fn.basename.substr(3, $fn.basename.chars - 3 - 3),
                     lang    => $fn.basename.substr(0, 2),

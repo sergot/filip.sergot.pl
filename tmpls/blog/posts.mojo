@@ -13,13 +13,14 @@
                                 <a href="/<%= $lang %>/blog/<%= $post.category %>/<%= $post.file %>"><%= $post.title %></a>
                             </h2>
                             <div id="postinfo"><span class="postauthor"><%= $post.author %></span><span class="postdate"><%= $post.date %></span></div>
-                            <p class="postdesc">
-                            <%= $post.short %>...
-                            </p>
+                            <div class="postdesc">
+                            <%= $post.short %>
+                            ...
+                            </div>
                             <span class="bluesubmit">
                                 <a href="/<%= $lang %>/blog/<%= $post.category %>/<%= $post.file %>" class="bluelink">Read more</a>
                             </span>
-                         </div>
+                        </div>
                     </div>
                 </div>
 % }

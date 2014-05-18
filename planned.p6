@@ -1,6 +1,8 @@
 #!/usr/bin/env perl6
 
 # hey, do I have any plans?
+# TODO:
+#   - coloooooors!
 my $today = Date.today;
 
 my $blog_data_dir  = 'data/posts';

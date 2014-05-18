@@ -4,9 +4,9 @@
                     <div id="postwin">
                         <div id="post">
 % if $post.thumbnail {
-                            <span class="postthumbnail">
+                            <div class="postthumbnail">
                                 <img src="/img/blog/<%= $post.thumbnail %>" width="200" height="200" alt="<%= $post.title %>">
-                            </span>
+                            </div>
 % }
                             <h2 class="posttitle">
                                 <%= $post.title %>

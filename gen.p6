@@ -79,7 +79,7 @@ for dir $blog_data_dir -> $fn {
         my @lines = $fn.IO.lines;
         my $date = Date.new(@lines.shift);
 
-        if $date < Date.today {
+        if $date <= Date.today {
             my $post =
                 Post.new(
                     file      => $fn.basename.substr(3, $fn.basename.chars - 3 - 3),

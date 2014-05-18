@@ -43,6 +43,7 @@ my @languages = <
 >;
 
 my @categories = <
+    perl
     perl6
     others
 >;
@@ -76,34 +77,38 @@ my @posts;
 for dir $blog_data_dir -> $fn {
     unless $fn.basename.substr(0, 1) eq '.' {
         my @lines = $fn.IO.lines;
-        my $post =
-            Post.new(
-                file      => $fn.basename.substr(3, $fn.basename.chars - 3 - 3),
-                title     => $fn.basename.substr(3, $fn.basename.chars - 3 - 3).split('_').join(' '),
-                date      => Date.new(@lines.shift),
-                tags      => @lines.shift.split(',')>>.trim,
-                author    => @lines.shift,
-                category  => @lines.shift,
-                thumbnail => @lines.shift,
-                lang      => $fn.basename.split('_').substr(0, 2),
-            );
+        my $date = Date.new(@lines.shift);
 
-        my $content = @lines.join("\n");
-        given open '/tmp/tmpblogpost', :w -> $tf {
-            $tf.print($content);
-            $tf.close();
+        if $date < Date.today {
+            my $post =
+                Post.new(
+                    file      => $fn.basename.substr(3, $fn.basename.chars - 3 - 3),
+                    title     => $fn.basename.substr(3, $fn.basename.chars - 3 - 3).split('_').join(' '),
+                    date      => $date,
+                    tags      => @lines.shift.split(',')>>.trim,
+                    author    => @lines.shift,
+                    category  => @lines.shift,
+                    thumbnail => @lines.shift,
+                    lang      => $fn.basename.split('_').substr(0, 2),
+                );
+
+            my $content = @lines.join("\n");
+            given open '/tmp/tmpblogpost', :w -> $tf {
+                $tf.print($content);
+                $tf.close();
+            }
+            $post.content = qx[Markdown_1.0.1/Markdown.pl --html4tags /tmp/tmpblogpost];
+            unlink '/tmp/tmpblogpost';
+
+            given open '/tmp/tmpblogpost', :w -> $tf {
+                $tf.print($content.substr(0, 256));
+                $tf.close();
+            }
+            $post.short = qx[Markdown_1.0.1/Markdown.pl --html4tags /tmp/tmpblogpost];
+            unlink '/tmp/tmpblogpost';
+
+            @posts.push: $post;
         }
-        $post.content = qx[Markdown_1.0.1/Markdown.pl --html4tags /tmp/tmpblogpost];
-        unlink '/tmp/tmpblogpost';
-
-        given open '/tmp/tmpblogpost', :w -> $tf {
-            $tf.print($content.substr(0, 256));
-            $tf.close();
-        }
-        $post.short = qx[Markdown_1.0.1/Markdown.pl --html4tags /tmp/tmpblogpost];
-        unlink '/tmp/tmpblogpost';
-
-        @posts.push: $post;
     }
 }
 @posts .= sort({

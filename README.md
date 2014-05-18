@@ -13,6 +13,7 @@ It:
 - generates posts, "static" sites and default index page with recent 10 posts
 - changes Markdown to HTML
 - generates RSS (using BreakDancer too)
+- doesn't generate posts with date in the future (planning)
 
 ROADMAP
 ================

@@ -185,20 +185,24 @@ sub blog {
 
     # generate index pages with recent 10 posts
     for @languages -> $lang {
-        gen "/$lang", sub {
-            my $content;
-            $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render($lang, @posts.grep({ .lang ~~ $lang })[^10].item);
-
-            my @newmenu = @menu.grep({ .lang ~~ $lang });
-            return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @newmenu.item, @categories.item, $content, 'home');
-        };
-        for @categories -> $cat {
-            gen "/$lang/blog/$cat", sub {
+        if @posts.grep({ .lang eq $lang }).elems {
+            gen "/$lang", sub {
                 my $content;
-                $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render($lang, @posts.grep({ .lang ~~ $lang && .category ~~ $cat })[^10].item);
+                $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render($lang, @posts.grep({ .lang ~~ $lang })[^10].item);
 
                 my @newmenu = @menu.grep({ .lang ~~ $lang });
-                return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @newmenu.item, @categories.item, $content, $cat);
+                return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @newmenu.item, @categories.item, $content, 'home');
+            };
+            for @categories -> $cat {
+                if @posts.grep({ .category eq $cat }).elems {
+                    gen "/$lang/blog/$cat", sub {
+                        my $content;
+                        $content = Template::Mojo.new(slurp 'tmpls/blog/posts.mojo').render($lang, @posts.grep({ .lang ~~ $lang && .category ~~ $cat })[^10].item);
+
+                        my @newmenu = @menu.grep({ .lang ~~ $lang });
+                        return Template::Mojo.new(slurp 'tmpls/layout.mojo').render($lang, @newmenu.item, @categories.item, $content, $cat);
+                    }
+                }
             }
         }
     }

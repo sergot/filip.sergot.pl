@@ -5,6 +5,10 @@
         <title><%= $title %> :: filip.sergot.pl</title>
         <meta charset="UTF-8">
         
+        <meta name="description" content="Mostly about programming. Perl, Perl6, C and many others. Science too.">
+        <meta name="keywords" content="programming,perl,perl6,hacking,c,science">
+        <meta name="author" content="Filip Sergot">
+
         <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
         
         <link rel="stylesheet" type="text/css" href="/css/style.css">

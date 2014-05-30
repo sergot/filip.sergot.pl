@@ -10,6 +10,8 @@
         <meta name="author" content="Filip Sergot">
 
         <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+
+        <link rel="alternate" type="application/atom+xml" title="sergot's RSS" href="http://filip.sergot.pl/index.atom">
         
         <link rel="stylesheet" type="text/css" href="/css/style.css">
 

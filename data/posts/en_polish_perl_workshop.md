@@ -1,4 +1,5 @@
 2014-05-18
+Polish Perl Workshop 2014 in Poznan
 perl, plpw, poznan
 sergot
 perl

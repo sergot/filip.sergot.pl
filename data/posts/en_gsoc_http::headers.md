@@ -1,4 +1,5 @@
 2014-05-20
+[Google Summer of Code] - HTTP::Headers
 perl6, gsoc
 sergot
 perl6
@@ -24,7 +25,7 @@ Example usage:
         $h.remove_header('Accept');              # delete
         $h.header(Content-Type => 'text/plain'); # set
 
-        say $h.as_string("\r\n");                # print headers as a string
+        say $h.Str("\r\n");                # print headers as a string
 
 We are able to store multiple values in such fields
 

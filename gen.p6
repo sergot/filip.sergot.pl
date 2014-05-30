@@ -83,7 +83,8 @@ for dir $blog_data_dir -> $fn {
             my $post =
                 Post.new(
                     file      => $fn.basename.substr(3, $fn.basename.chars - 3 - 3),
-                    title     => $fn.basename.substr(3, $fn.basename.chars - 3 - 3).split('_').join(' '),
+                    title     => @lines.shift,
+                    #title     => $fn.basename.substr(3, $fn.basename.chars - 3 - 3).split('_').join(' '),
                     date      => $date,
                     tags      => @lines.shift.split(',')>>.trim,
                     author    => @lines.shift,

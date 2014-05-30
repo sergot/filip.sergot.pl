@@ -53,6 +53,9 @@
     <li><a href="<%= $m.location %>"><%= $m.title %></a></li>
 % }
                     </ul>
+                    <ul class="menubarhor" style="float: right; margin-right: 0px;">
+                        <li><a href="/index.atom">rss</a></li>
+                    </ul>
                 </div>
             </div>
             <div id="centrum">

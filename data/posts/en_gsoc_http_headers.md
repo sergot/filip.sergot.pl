@@ -1,5 +1,5 @@
 2014-05-20
-[Google Summer of Code] - HTTP::Headers
+[Google Summer of Code] HTTP::Headers
 perl6, gsoc
 sergot
 perl6

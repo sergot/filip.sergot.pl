@@ -117,11 +117,11 @@ Plans
 
 It is the third week of Google Summer of Code and here is the plan:
 
-    - complete HTTP::Request and HTTP::Response modules
-        - with cookies working
-        - with encoding/decoding working
-    - write HTTP::Simple
-    - write lwp tools: lwp-request, lwp-dump and lwp-download (should we name them http-* as well?)
+- complete HTTP::Request and HTTP::Response modules
+    - with cookies working
+    - with encoding/decoding working
+- write HTTP::Simple
+- write lwp tools: lwp-request, lwp-dump and lwp-download (should we name them http-* as well?)
 
 I really enjoyed the first two weeks of coding under care of awesome mentors.
 

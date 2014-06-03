@@ -72,10 +72,7 @@ Here is an example:
 
         my $file = './cookies.dat';
 
-        my $c = HTTP::Cookies.new(
-            file     => $file,
-            autosave => 1,
-        );
+        my $c = HTTP::Cookies.new( :$file, :autosave );
 
         $c.set_cookie(
             'Set-Cookie: name1=value1; Expires=DATE; Path=/; Domain=somedomain; secure'

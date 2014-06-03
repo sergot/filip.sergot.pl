@@ -95,7 +95,7 @@ We can find our cookies in $file too:
 
         $c.load;
 
-HTTP::Request and HTTP::Response will be using this module for cookies handling, so we'll be able e.g. to log into a website etc.
+HTTP::Request and HTTP::Response will use this module for cookies handling, so we'll be able to e.g. log into a website etc.
 
 [DateTime::Parse](https://github.com/sergot/datetime-parse)
 ===============

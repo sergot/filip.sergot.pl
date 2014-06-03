@@ -3,7 +3,7 @@
 perl6, gsoc
 sergot
 perl6
-
+gsoc_logo.png
 Hey people!
 
 I participate in Google Summer of Code this year, my project is to add TLS/SSL support to Perl 6, with all HTTP::* modules and LWP::UserAgent as well!

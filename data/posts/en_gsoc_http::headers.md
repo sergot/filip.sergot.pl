@@ -22,7 +22,7 @@ Example usage:
         my $h = HTTP::Headers.new(Accept => 'text/plain');
 
         my $a = $h.header('Accept');             # get
-        $h.remove_header('Accept');              # delete
+        $h.remove-header('Accept');              # delete
         $h.header(Content-Type => 'text/plain'); # set
 
         say $h.Str("\r\n");                # print headers as a string
@@ -33,7 +33,7 @@ We are able to store multiple values in such fields
 
 We can also push new values to existing field:
 
-        $h.push_header(Accept => <image/jpeg image/png>);
+        $h.push-header(Accept => <image/jpeg image/png>);
 
 Why do we need this?
 =====================

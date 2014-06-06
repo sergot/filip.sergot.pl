@@ -42,7 +42,7 @@ This module wraps every HTTP message receiving from servers.
 
 Yes, we have just parsed a HTTP message, now - we can edit it
 
-        $m.add_content("Some new content!!");
+        $m.add-content("Some new content!!");
         say "content:" ~ $m.content;
 
         $m.header( Vary => 'Age' );
@@ -50,7 +50,7 @@ Yes, we have just parsed a HTTP message, now - we can edit it
 
 ... and remove one header:
 
-        $m.remove_header('Via');
+        $m.remove-header('Via');
 
 ... or delete the whole message:
 
@@ -74,7 +74,7 @@ Here is an example:
 
         my $c = HTTP::Cookies.new( :$file, :autosave );
 
-        $c.set_cookie(
+        $c.set-cookie(
             'Set-Cookie: name1=value1; Expires=DATE; Path=/; Domain=somedomain; secure'
         );
 

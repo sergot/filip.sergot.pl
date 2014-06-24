@@ -319,3 +319,7 @@ ul.menu a:hover {
 hr {
     border: 1px solid #ddddde;
 }
+
+h1 {
+    font-size: 25px;
+}

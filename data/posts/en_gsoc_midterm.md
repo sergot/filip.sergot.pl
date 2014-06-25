@@ -1,4 +1,4 @@
-2014-06-24
+2014-06-25
 [GSoC] Midterm report
 perl6, gsoc
 sergot

@@ -6,12 +6,12 @@ perl6
 gsoc_logo.png
 Hi!
 
-I have just submitted my midterm evaluation questionnaire! This part of Google Summer of Code was really graet, I learnt a lot. I want to write here about my progress in the project.
+I have just submitted my midterm evaluation questionnaire! This part of Google Summer of Code was really great, I learnt a lot. I want to write here about my progress in the project.
 
 What did I do during the first part of Google Summer of Code?
 =======================
 
-Here you can find previous gsoc's posts:
+Here you can find my previous posts about GSoC:
 
 + [HTTP::Headers ](http://filip.sergot.pl/en/blog/perl6/gsoc_http::headers/)
 + [HTTP::Message, HTTP::Cookies and DateTime::Parse](http://filip.sergot.pl/en/blog/perl6/gsoc_http_cookies_message_datetime_parse/)
@@ -19,7 +19,7 @@ Here you can find previous gsoc's posts:
 What's new?
 ==============
 
-The **important** thing is that I moved every HTTP::* to one, [HTTP::UserAgent](https://github.com/sergot/http-useragent/) repo, I left old ones just to keep the commits history.
+The **important** thing is that I merged all the HTTP::* repos into one, [HTTP::UserAgent](https://github.com/sergot/http-useragent/), you can still find old repos, I just wanted to keep the commits history.
 
 After this period, a simple HTTP client is available, just:
 
@@ -33,8 +33,6 @@ or:
         getprint "filip.sergot.pl";
 
 That's how you can print the sourcecode of a website.
-
-So far we can handle the 'chunked' encoding, more will be added soon-ish.
 
 We have also a prototype of more complex UserAgent working.
 

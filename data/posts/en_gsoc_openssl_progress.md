@@ -8,7 +8,7 @@ Hi!
 
 I can proudly annouce that Perl 6 has [OpenSSL bindings](https://github.com/sergot/openssl) available now! \o/
 
-We have low level bindings and a higher level wrapper, you can simply write:
+We have low level bindings and a high level wrapper, you can simply write:
 
 
     use OpenSSL;
@@ -32,11 +32,11 @@ But if you don't want to use high level wrapper, you can use OpenSSL particular 
 - OpenSSL::Ctx - contains declaration of SSL_CTX struct and functions to handle it
 - OpenSSL::Cipher and so on... (see [this](https://github.com/sergot/openssl/tree/master/lib/OpenSSL))
 
-The thing which is not clear is the "set up the connection" section.
+The thing which is not clear above is the "set up the connection" section.
 I've wrote [IO::Socket::SSL](https://github.com/sergot/io-socket-ssl) which provides
 high level API, the same as IO::Socket::INET, for SSL connections. It does 
 "set up the connection" for us, using written in C client_connect function
-which returns connection's file descriptor, it's needed by `$ssl.set-fd`,
+which returns connection's file descriptor, it's needed by `$ssl.set-fd($fd)`,
 it is because OpenSSL wants to own the connection.
 
 
@@ -45,6 +45,7 @@ it is because OpenSSL wants to own the connection.
         return handle; // fd
     }
 
+We can do the same but in another way, we just have to pass a file descriptor to `.set-fd($)`.
 
 Using IO::Socket::SSL, we can write:
 

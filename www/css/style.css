@@ -323,3 +323,9 @@ hr {
 h1 {
     font-size: 20px;
 }
+
+pre {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
